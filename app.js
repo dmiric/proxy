@@ -11,8 +11,8 @@ for(var bot of pm2['apps']) {
 
     var path = "/" + bot['env'].symbol + "/*"; 
     app.all(path, function(req, res) {
-        req.url = '/hook'
         var url = req.originalUrl.split("/")
+        req.url = '/' + url[2]
         for(var bot of pm2['apps']) {          
             if(bot.name == url[1]) {
                 var server = 'http://localhost:' + bot['env'].port
