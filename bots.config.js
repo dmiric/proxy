@@ -3,18 +3,28 @@ module.exports = {
     name: "Proxy",
     script: "./app.js"
   },{
-    name: "tBTCUSD",
+    name: "BotV2-1-tBTCUSD",
     script: "../../../../botV2/_work/bot/bot/dist/main.js",
     env: {
       "port": 3000,
-      "symbol": "tBTCUSD"
+      "symbol": "tBTCUSD",
+      "botVer": "botV2"
     }
   },{
-    name: "tETHUSD",
+    name: "BotV2-2-tETHUSD",
     script: "../../../../botV2/_work/bot/bot/dist/main.js",
     env: {
       "port": 3001,
-      "symbol": "tETHUSD"
+      "symbol": "tETHUSD",
+      "botVer": "botV2"
+    }
+  },{
+    name: "BotV3-1",
+    script: "../../../../botV3/_work/botV3/botV3/dist/main.js",
+    env: {
+      "port": 3002,
+      "botVer": "botV3",
+      "name": "BotV3-1"
     }
   }]
 }
