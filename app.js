@@ -19,9 +19,8 @@ for (var bot of pm2['apps']) {
             var url = req.originalUrl.split("/")
 
             if (bot['env'].botVer == 'botV2') {
-                req.url = '/' + url[2]
-
                 if (bot.name == url[1]) {
+                    req.url = '/' + url[2]
                     var server = 'http://localhost:' + bot['env'].port
                     apiProxy.web(req, res, {
                         target: server
@@ -30,7 +29,12 @@ for (var bot of pm2['apps']) {
                 }
             }
             if (bot['env'].botVer == 'botV3') {
-                req.url = '/' + url[2]
+                req.url = ''
+                url.forEach(function(u) {
+                    if(u != '' && u != bot.name) {
+                        req.url = req.url + '/' + u
+                    }
+                })
 
                 var server = 'http://localhost:' + bot['env'].port
                 apiProxy.web(req, res, {
