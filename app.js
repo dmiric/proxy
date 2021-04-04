@@ -37,6 +37,8 @@ for (var bot of pm2['apps']) {
                 })
 
                 var server = 'http://localhost:' + bot['env'].port
+                console.log(server)
+                console.log(req)
                 apiProxy.web(req, res, {
                     target: server
                 });
