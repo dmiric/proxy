@@ -18,33 +18,23 @@ for (var bot of pm2['apps']) {
             }
             var url = req.originalUrl.split("/")
 
-            if (bot['env'].botVer == 'botV2') {
-                if (bot.name == url[1]) {
-                    req.url = '/' + url[2]
-                    var server = 'http://localhost:' + bot['env'].port
-                    apiProxy.web(req, res, {
-                        target: server
-                    });
-                    break
+            if (url[1] != bot.name) {
+                continue
+            }
+
+            req.url = ''
+
+            url.forEach(function (u) {
+                if (u != '' && u != bot.name) {
+                    req.url = req.url + '/' + u
                 }
-            }
-            if (bot['env'].botVer == 'botV3') {
-                req.url = ''
-                url.forEach(function(u) {
-                    if(u != '' && u != bot.name) {
-                        req.url = req.url + '/' + u
-                    }
-                })
+            })
 
-                var server = 'http://localhost:' + bot['env'].port
-                console.log(server)
-                console.log(req)
-                apiProxy.web(req, res, {
-                    target: server
-                });
-                break
-
-            }
+            var server = 'http://localhost:' + bot['env'].port
+            apiProxy.web(req, res, {
+                target: server
+            });
+            break
         }
     });
 
