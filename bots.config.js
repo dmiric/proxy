@@ -34,5 +34,13 @@ module.exports = {
       "botVer": "botV3",
       "name": "BotV3-2731"
     }
+  },{
+    name: "BotV3-Ivana-7711",
+    script: "../../../../botV3/_work/botV3/botV3/dist/main.js",
+    env: {
+      "port": 3004,
+      "botVer": "botV3",
+      "name": "BotV3-Ivana-2731"
+    }
   }]
 }
